@@ -32,25 +32,26 @@ Para abordar o problema da poluição costeira e marinha, desenvolvemos uma solu
 ### Resultados Obtidos
 
 O modelo de detecção de objetos foi treinado utilizando o Roboflow 3.0 Object Detection (Fast), alcançando os seguintes resultados:
+[Link do projeto no roboflow](https://universe.roboflow.com/reconhecimentoimgs/global-solution)
 
 #### Dataset
-![imageDataset](imgs/dataset.png)
-![imageHealthCheck](imgs/healthCheck.png)
+![imageDataset](imgs_readme/dataset.png)
+![imageHealthCheck](imgs_readme/healthCheck.png)
 
 #### Classes
-![imageClasses](imgs/classes.png) 
+![imageClasses](imgs_readme/classes.png) 
 
 #### Precisão
-![imagePrecision](imgs/precisao.png)
+![imagePrecision](imgs_readme/precisao.png)
 - **mAP (Mean Average Precision)**: 92.2%
 - **Precision**: 90.7%
 - **Recall**: 90.0%
 
 #### Gráficos 
-![imageGraphs](imgs/graficos.png)
+![imageGraphs](imgs_readme/graficos.png)
 
 #### Teste
-![imageTeste](imgs/teste.png) 
+![imageTeste](imgs_readme/teste.png) 
 
 Esses resultados indicam que o modelo é eficaz na identificação precisa de resíduos em imagens. A plataforma desenvolvida permite a coleta e verificação de dados de maneira eficiente, proporcionando uma ferramenta poderosa para o monitoramento e redução da poluição marinha.
 
