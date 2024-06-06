@@ -1,5 +1,4 @@
 # pip install streamlit roboflow pillow opencv-python
-# pip install pillow
 
 # Execute o aplicativo Streamlit:
 # streamlit run app.py
@@ -8,7 +7,9 @@ import io
 from PIL import Image
 import streamlit as st
 import cv2
+import numpy as np
 from roboflow import Roboflow
+from collections import Counter
 
 # Substitua pela sua chave de API do Roboflow
 API_KEY = "p8ToOtSdu8VxVhNv6hYF"
@@ -34,7 +35,9 @@ def identificar_objetos(imagem):
     imagem = cv2.cvtColor(imagem, cv2.COLOR_RGB2BGR)
 
     # Realiza a inferência
-    prediction = model.predict(imagem, confidence=40, overlap=30)
+    prediction = model.predict(imagem, confidence=40, overlap=30).json()['predictions']
+
+    deteccoes = []  # Lista para armazenar as detecções
 
     # Desenha as bounding boxes e informações na imagem
     for predicao in prediction:
@@ -48,6 +51,13 @@ def identificar_objetos(imagem):
             y2 = int(y1 + predicao['height'])
             classe = predicao['class']
 
+            # Armazena a detecção na lista
+            deteccoes.append({
+                "classe": classe,
+                "confianca": confianca,
+                "bounding_box": [x1, y1, x2, y2]
+            })
+
             # Obtém a cor para a classe
             cor = cores_por_classe.get(classe, (0, 0, 0)) # Cor padrão: preto
 
@@ -58,7 +68,23 @@ def identificar_objetos(imagem):
             texto = f"{classe}: {confianca:.2f}"
             cv2.putText(imagem, texto, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, cor, 2)
 
-    return imagem
+    return imagem, deteccoes
+
+# Função para processar a imagem
+@st.cache_data
+def processar_imagem(imagem_carregada):
+    if imagem_carregada:
+        imagem_processada, deteccoes = identificar_objetos(imagem_carregada)
+
+        # Contar as ocorrências de cada classe
+        contagem_classes = Counter(d['classe'] for d in deteccoes)
+
+        # Formatar a string de tipoLixo
+        tipo_lixo = ", ".join(f"{count} -> {classe}" for classe, count in contagem_classes.items())
+
+        return {"deteccoes": deteccoes, "tipoLixo": tipo_lixo}, imagem_processada
+    else:
+        return {"error": "Nenhuma imagem enviada."}, None
 
 # Configura a página do Streamlit
 st.title("Identificação de Objetos")
@@ -73,7 +99,12 @@ if imagem_carregada is not None:
 
     # Realiza a identificação dos objetos na imagem
     if st.button("Identificar Objetos"):
-        imagem_com_deteccoes = identificar_objetos(imagem_carregada)
+        resultado, imagem_com_deteccoes = processar_imagem(imagem_carregada)
 
-        # Exibe a imagem com as detecções
-        st.image(imagem_com_deteccoes, caption='Imagem com Detecções', use_column_width=True)
+        if "error" not in resultado:
+            # Exibe a imagem com as detecções
+            st.image(imagem_com_deteccoes, caption='Imagem com Detecções', use_column_width=True)
+            # Exibe o JSON com os tipos de lixo encontrados
+            st.json(resultado)
+        else:
+            st.error(resultado["error"])
