@@ -12,7 +12,7 @@ from roboflow import Roboflow
 from collections import Counter
 
 # Substitua pela sua chave de API do Roboflow
-API_KEY = "p8ToOtSdu8VxVhNv6hYF"
+API_KEY = "xxxxxxxxxxxx"
 
 # Dicionário para mapear classes a cores
 cores_por_classe = {
