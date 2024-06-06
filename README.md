@@ -1,6 +1,4 @@
-# Relatório Técnico
-
-## Desafio Inovação Azul - Global Solution: Engajando Tecnologia para um Futuro Sustentável nos Oceanos
+# Desafio Inovação Azul - Global Solution: Engajando Tecnologia para um Futuro Sustentável nos Oceanos
 
 ### Descrição do Problema
 
@@ -16,13 +14,7 @@ O desafio busca desenvolver projetos que:
 
 ### Metodologia Utilizada
 
-Para abordar o problema da poluição costeira e marinha, desenvolvemos uma solução que envolve a monitorização colaborativa e conscientização pública. A plataforma proposta possui as seguintes funcionalidades:
-
-1. **Cadastro de Usuário**: Os usuários podem se cadastrar na plataforma fornecendo informações básicas como nome, e-mail e localização.
-2. **Envio de Dados de Lixo**: Após o cadastro, os usuários podem enviar dados sobre locais onde há presença de lixo, incluindo tipo de lixo e condição geral do ambiente.
-3. **Captura de Fotos**: Os usuários podem tirar fotos do local, que são georreferenciadas para identificar precisamente a localização do problema.
-4. **Verificação do Sistema**: Antes da publicação, os dados passam por um processo de verificação utilizando algoritmos de inteligência artificial e revisão manual para garantir a precisão das informações.
-5. **Visualização no Mapa**: Dados verificados são exibidos em um mapa interativo acessível ao público, permitindo a visualização das localizações onde lixo foi relatado, tipo de lixo e outras informações relevantes.
+Para abordar o problema da poluição costeira e marinha, desenvolvemos uma solução que envolve a monitorização colaborativa e conscientização pública. Sendo o usuário poder tirar fotos de onde ele está e o sistema verificar o lixo das fotos.
 
 #### Tecnologias Utilizadas
 
