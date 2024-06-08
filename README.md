@@ -47,6 +47,9 @@ O modelo de detecção de objetos foi treinado utilizando o Roboflow 3.0 Object 
 
 Esses resultados indicam que o modelo é eficaz na identificação precisa de resíduos em imagens. A plataforma desenvolvida permite a coleta e verificação de dados de maneira eficiente, proporcionando uma ferramenta poderosa para o monitoramento e redução da poluição marinha.
 
+**Link do vídeo:**
+    * [https://youtu.be/JiGy_ohObWo](https://youtu.be/fqcHBxSfYv4)
+
 ### Conclusões
 
 A solução desenvolvida atende aos objetivos do Desafio Inovação Azul 2024 ao:
